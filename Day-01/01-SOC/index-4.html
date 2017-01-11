@@ -112,7 +112,7 @@
 			$root.on('change', "#rangeTax", function(){
 				calculator.set('tax', $(this).val().toInt());
 			});
-			$("#btnCalculate").click(function(){
+			$root.on('click', "#btnCalculate", function(){
 				calculator.calculate();
 			});
 
