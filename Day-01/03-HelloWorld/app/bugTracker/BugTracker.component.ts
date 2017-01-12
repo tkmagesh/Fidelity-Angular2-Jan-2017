@@ -15,9 +15,9 @@ import { BugOperations } from './services/BugOperations.service';
 				</section>
 				<section class="sort">
 					<label for="">Order By :</label>
-					<input type="text" name="" id="">
+					<input type="text" [(ngModel)]="sortBy">
 					<label for="">Descending ? :</label>
-					<input type="checkbox" name="" id="">
+					<input type="checkbox" [(ngModel)]="sortDescending">
 				</section>
 				<section class="edit">
 					<label for="">New Bug :</label>
@@ -26,9 +26,9 @@ import { BugOperations } from './services/BugOperations.service';
 				</section>
 				<section class="list">
 					<ol>
-						<li *ngFor="let bug of bugs">
+						<li *ngFor="let bug of bugs | sort:sortBy:sortDescending">
 							<span class="bugname" (click)="toggle(bug)" [ngClass]="{closed : bug.isClosed}">
-								{{bug.name}}
+								{{bug.name | trimText:40}}
 							</span>
 							<div class="datetime">[Created At]</div>
 						</li>
@@ -41,7 +41,7 @@ import { BugOperations } from './services/BugOperations.service';
 	`
 })
 export class BugTrackerComponent{
-	bugs : Array<IBug> = [];
+	bugs : (void | IBug)[] = [];
 	
 	constructor(private bugOperations : BugOperations){
 		
@@ -49,11 +49,17 @@ export class BugTrackerComponent{
 
 	onSaveClick(bugName:string){
 		let newBug = this.bugOperations.createNew(bugName);
-		this.bugs.push(newBug);
+		this.bugs = this.bugs.concat([newBug]);
 	}
 
 	toggle(bug : IBug){
-		this.bugOperations.toggle(bug);
+		//this.bugOperations.toggle(bug);
+		var self = this;
+		this.bugs = this.bugs.map(function(bugInList){
+			if (bug === bugInList)
+				return self.bugOperations.toggle(bug);
+			return bugInList;
+		});
 	}
 
 	onRemoveClosedClick(){

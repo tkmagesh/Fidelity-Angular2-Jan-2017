@@ -1,10 +1,10 @@
 Use Cases
 =========
-1. Add a new bug
-2. List the bugs
-3. Toggle the 'closed' status of a bug
-4. Remove closed bugs
-5. Display statistics ( # of closed / total # of bugs )
+1. Add a new bug - done
+2. List the bugs - done
+3. Toggle the 'closed' status of a bug - done
+4. Remove closed bugs - done
+5. Display statistics ( # of closed / total # of bugs ) - done
 6. Sort the bugs
 7. Improvise the bug display
 8. Persist the bugs in the localStorage
