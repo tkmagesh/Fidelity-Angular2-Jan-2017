@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   template: `
   	<h1>Angular App</h1>
   	<hr>
-  	<greeter></greeter>
+  	<salary-calculator></salary-calculator>
   `,
 })
 export class AppComponent  { name = 'Angular'; }
