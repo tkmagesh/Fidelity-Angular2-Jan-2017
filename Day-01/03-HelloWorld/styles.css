@@ -7,11 +7,36 @@ h1 {
 .field{
 	margin-bottom: 10px;
 }
-label{
-	display: block;
-}
+
 #divSalary{
 	color : red;
 	font-size: 20pt;
 	font-weight: bold;
 }
+
+section{
+		margin-bottom: 10px;
+	}
+	.closed {
+		color : red;
+		text-decoration: line-through;
+		font-style: italic;
+		font-weight: bold;
+	}
+	.stats, .bugname{
+		font-size: 20pt;
+	}
+	ol{
+		width: 500px;
+		list-style: none;
+	}
+	li{
+		margin-bottom: 10px;
+		border : 1px solid gray;
+		background-color: #e7e7e7;
+		padding: 5px;
+		border-radius: 5px;
+	}
+	.bugname{
+		cursor: pointer;
+	}
