@@ -2,19 +2,16 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } 	 from '@angular/forms';
 
+import { BugTrackerModule } from './bugTracker/bugTracker.module';
 
 import { AppComponent }  			 from './app.component';
 import { GreeterComponent } 		 from './greeter/greeter.component' ;
 import { SalaryCalculatorComponent } from './SalaryCalculator/SalaryCalculator.Component';
-import { BugTrackerComponent } 		 from './bugTracker/BugTracker.component';
-import { BugOperations }			 from './bugTracker/services/BugOperations.service'	
-import { TrimTextPipe }				 from './bugTracker/pipes/TrimText.pipe';
-import { SortPipe }					 from './bugTracker/pipes/Sort.pipe';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, GreeterComponent, SalaryCalculatorComponent, BugTrackerComponent, TrimTextPipe, SortPipe ],
+  imports:      [ BrowserModule, FormsModule, BugTrackerModule ],
+  declarations: [ AppComponent, GreeterComponent, SalaryCalculatorComponent],
   bootstrap:    [ AppComponent ],
-  providers:	[ BugOperations ]
+  providers:	[  ]
 })
 export class AppModule { }
