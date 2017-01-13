@@ -22,12 +22,11 @@ import { BugStorage } from './services/BugStorage.service';
 
 				<section class="list">
 					<ol>
-						<li *ngFor="let bug of bugStorage.bugs | sort:sortBy:sortDescending">
-							<span class="bugname" (click)="toggle(bug)" [ngClass]="{closed : bug.isClosed}">
-								{{bug.name | trimText:40}}
-							</span>
-							<div class="datetime">{{bug.createdAt | elapsed}}</div>
-						</li>
+						<bug-item 
+							*ngFor="let bug of bugStorage.bugs | sort:sortBy:sortDescending" 
+							[data]="bug" 
+							(onBugToggle)="toggle($event)">
+						</bug-item>
 						
 					</ol>
 					<input type="button" value="Remove Closed" (click)="onRemoveClosedClick()">
