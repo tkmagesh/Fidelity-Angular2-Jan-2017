@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-  	<bug-tracker></bug-tracker>
+  	<greeter></greeter>
   `,
 })
 export class AppComponent  { name = 'Angular'; }

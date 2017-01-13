@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 		<label> Name : </label>
 		<input type="text" [(ngModel)]="name">
 		<input type="button" value="Greet" (click)="onGreetClick()" >
-		<div>{{message}}</div>
+		<greeter-message [data]="message"></greeter-message>
 	`,
 	selector : 'greeter'
 })

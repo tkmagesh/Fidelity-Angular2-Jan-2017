@@ -6,11 +6,12 @@ import { BugTrackerModule } from './bugTracker/bugTracker.module';
 
 import { AppComponent }  			 from './app.component';
 import { GreeterComponent } 		 from './greeter/greeter.component' ;
+import { GreeterMessageComponent } 		 from './greeter/greeterMessage.component' ;
 import { SalaryCalculatorComponent } from './SalaryCalculator/SalaryCalculator.Component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, BugTrackerModule ],
-  declarations: [ AppComponent, GreeterComponent, SalaryCalculatorComponent],
+  declarations: [ AppComponent, GreeterComponent, SalaryCalculatorComponent, GreeterMessageComponent],
   bootstrap:    [ AppComponent ],
   providers:	[  ]
 })

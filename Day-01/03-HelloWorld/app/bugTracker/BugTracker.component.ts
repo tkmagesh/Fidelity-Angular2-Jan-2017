@@ -30,7 +30,7 @@ import { BugStorage } from './services/BugStorage.service';
 							<span class="bugname" (click)="toggle(bug)" [ngClass]="{closed : bug.isClosed}">
 								{{bug.name | trimText:40}}
 							</span>
-							<div class="datetime">{{bug.createdAt | date:'dd-MMM-yy hh:mm:ss a'}}</div>
+							<div class="datetime">{{bug.createdAt | elapsed}}</div>
 						</li>
 						
 					</ol>
@@ -44,7 +44,7 @@ export class BugTrackerComponent{
 	
 	
 	constructor(private bugStorage : BugStorage){
-	
+		
 	}
 
 	onSaveClick(bugName:string){

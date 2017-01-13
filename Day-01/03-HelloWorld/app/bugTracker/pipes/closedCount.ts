@@ -6,7 +6,7 @@ import { IBug } from '../models/IBug';
 	pure : true
 })
 export class ClosedCountPipe implements PipeTransform{
-	transform(bugs : Array<IBug) : number{
+	transform(bugs : Array<IBug>) : number{
 		return bugs.filter(bug => bug.isClosed).length;
 	}
 }
