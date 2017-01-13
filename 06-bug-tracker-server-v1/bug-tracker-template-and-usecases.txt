@@ -1,0 +1,91 @@
+Use Cases
+=========
+1. Add a new bug - done
+2. List the bugs - done
+3. Toggle the 'closed' status of a bug - done
+4. Remove closed bugs - done
+5. Display statistics ( # of closed / total # of bugs ) - done
+6. Sort the bugs - done
+7. Improvise the bug display - done
+8. Persist the bugs in the localStorage
+	window.localStorage
+	--------------------
+	1. Key/Value store
+	2. Key and Value must be strings
+		(Use JSON.stringify() and JSON.parse() for serialization and deserialization respectively)
+	3. Same Origin Policy
+	APIs
+	====
+		* setItem(key, value)
+		* getItem(key)  //=> value
+		* removeItem(key)
+		* key(index) //key at index
+		* clear()
+		* length
+
+9. Display 'createdAt' for each bug
+10. Persist the bugs in the server
+11. Make the bugs accessible through unique urls (bookmarking)
+
+<style>
+	section{
+		margin-bottom: 10px;
+	}
+	.closed {
+		color : red;
+		text-decoration: line-through;
+		font-style: italic;
+		font-weight: bold;
+	}
+	.stats, .bugname{
+		font-size: 20pt;
+	}
+	ol{
+		width: 50%;
+		list-style: none;
+	}
+	li{
+		margin-bottom: 10px;
+		border : 1px solid gray;
+		background-color: #e7e7e7;
+		padding: 5px;
+		border-radius: 5px;
+	}
+	.bugname{
+		cursor: pointer;
+	}
+</style>
+
+<h1>Bug Tracker</h1>
+<hr>
+<section class="content">
+	<section class="stats">
+		<span class="closed">2</span>
+		<span> / </span>
+		<span>5</span>
+	</section>
+	<section class="sort">
+		<label for="">Order By :</label>
+		<input type="text" name="" id="">
+		<label for="">Descending ? :</label>
+		<input type="checkbox" name="" id="">
+	</section>
+	<section class="edit">
+		<label for="">New Bug :</label>
+		<input type="text" name="" id="">
+		<input type="button" value="Save">
+	</section>
+	<section class="list">
+		<ol>
+			<li>
+				<span class="bugname closed">This is bug - 1</span>
+				<div class="datetime">[Created At]</div>
+			</li>
+			<li>
+				<span class="bugname">This is bug - 2</span>
+				<div class="datetime">[Created At]</div>
+			</li>
+		</ol>
+		<input type="button" value="Remove Closed">
+	</section>
+</section>
