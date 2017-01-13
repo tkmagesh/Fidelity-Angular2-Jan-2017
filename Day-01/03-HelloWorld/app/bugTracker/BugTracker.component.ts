@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IBug } from './models/IBug';
-import { BugOperations } from './services/BugOperations.service';
+import { BugStorage } from './services/BugStorage.service';
 
 @Component({
 	selector : 'bug-tracker',
@@ -9,9 +9,9 @@ import { BugOperations } from './services/BugOperations.service';
 			<hr>
 			<section class="content">
 				<section class="stats">
-					<span class="closed">{{getClosedCount()}}</span>
+					<span class="closed">{{bugStorage.bugs | closedCount}}</span>
 					<span> / </span>
-					<span>{{bugs.length}}</span>
+					<span>{{bugStorage.bugs.length}}</span>
 				</section>
 				<section class="sort">
 					<label for="">Order By :</label>
@@ -26,11 +26,11 @@ import { BugOperations } from './services/BugOperations.service';
 				</section>
 				<section class="list">
 					<ol>
-						<li *ngFor="let bug of bugs | sort:sortBy:sortDescending">
+						<li *ngFor="let bug of bugStorage.bugs | sort:sortBy:sortDescending">
 							<span class="bugname" (click)="toggle(bug)" [ngClass]="{closed : bug.isClosed}">
 								{{bug.name | trimText:40}}
 							</span>
-							<div class="datetime">[Created At]</div>
+							<div class="datetime">{{bug.createdAt | date:'dd-MMM-yy hh:mm:ss a'}}</div>
 						</li>
 						
 					</ol>
@@ -41,40 +41,24 @@ import { BugOperations } from './services/BugOperations.service';
 	`
 })
 export class BugTrackerComponent{
-	bugs : (void | IBug)[] = [];
 	
-	constructor(private bugOperations : BugOperations){
-		
+	
+	constructor(private bugStorage : BugStorage){
+	
 	}
 
 	onSaveClick(bugName:string){
-		let newBug = this.bugOperations.createNew(bugName);
-		this.bugs = this.bugs.concat([newBug]);
+		this.bugStorage.addNew(bugName);
 	}
 
 	toggle(bug : IBug){
-		//this.bugOperations.toggle(bug);
-		var self = this;
-		this.bugs = this.bugs.map(function(bugInList){
-			if (bug === bugInList)
-				return self.bugOperations.toggle(bug);
-			return bugInList;
-		});
+		this.bugStorage.toggle(bug);
 	}
 
 	onRemoveClosedClick(){
-		for(let i=this.bugs.length -1 ; i >=0; i--)
-			if (this.bugs[i].isClosed)
-				this.bugs.splice(i,1);
+		this.bugStorage.removeClosed();
 	}
 
-	getClosedCount(){
-		let closedCount = 0;
-		for(let i =0; i < this.bugs.length; i++)
-			if (this.bugs[i].isClosed)
-				++closedCount;
-		return closedCount;
-	}
 }
 
 

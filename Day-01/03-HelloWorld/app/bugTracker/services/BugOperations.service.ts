@@ -4,16 +4,20 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class BugOperations{
 	
-	createNew (bugName:string) : IBug{
+	createNew (id : number, bugName:string) : IBug{
 		return {
+			id : id,
 			name : bugName,
-			isClosed : false
+			isClosed : false,
+			createdAt : new Date()
 		}
-	},
+	}
 	toggle (bug : IBug) : IBug{
 		return {
+			id : bug.id,
 			name : bug.name,
-			isClosed : !bug.isClosed
+			isClosed : !bug.isClosed,
+			createdAt : bug.createdAt
 		};
 	}
 }
