@@ -8,22 +8,18 @@ import { BugStorage } from './services/BugStorage.service';
 		<h1>Bug Tracker</h1>
 			<hr>
 			<section class="content">
-				<section class="stats">
-					<span class="closed">{{bugStorage.bugs | closedCount}}</span>
-					<span> / </span>
-					<span>{{bugStorage.bugs.length}}</span>
-				</section>
+				<bug-stats [data]="bugStorage.bugs"></bug-stats>
 				<section class="sort">
 					<label for="">Order By :</label>
 					<input type="text" [(ngModel)]="sortBy">
 					<label for="">Descending ? :</label>
 					<input type="checkbox" [(ngModel)]="sortDescending">
 				</section>
-				<section class="edit">
-					<label for="">New Bug :</label>
-					<input type="text" #txtBugName>
-					<input type="button" value="Save" (click)="onSaveClick(txtBugName.value)">
-				</section>
+				
+
+				<bug-edit (onBugAdd)="onNewBugAddEvent($event)"></bug-edit>
+				
+
 				<section class="list">
 					<ol>
 						<li *ngFor="let bug of bugStorage.bugs | sort:sortBy:sortDescending">
@@ -47,9 +43,10 @@ export class BugTrackerComponent{
 		
 	}
 
-	onSaveClick(bugName:string){
+	onNewBugAddEvent(bugName : string){
 		this.bugStorage.addNew(bugName);
 	}
+	
 
 	toggle(bug : IBug){
 		this.bugStorage.toggle(bug);

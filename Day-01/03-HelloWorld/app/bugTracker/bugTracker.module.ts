@@ -8,9 +8,13 @@ import { BugTrackerComponent } 		 from './BugTracker.component';
 import { BugOperations }			 from './services/BugOperations.service'	
 import { BugStorage }				 from './services/BugStorage.service'
 import { ClosedCountPipe }			 from './pipes/closedCount';
+import { BugStatsComponent }		 from './components/BugStats.component';
+import { BugEditComponent }			 from './components/BugEdit.component';
+
+
 @NgModule({
   imports:      [ FormsModule, UtilsModule, CommonModule ],
-  declarations: [ BugTrackerComponent, ClosedCountPipe],
+  declarations: [ BugTrackerComponent, ClosedCountPipe, BugStatsComponent, BugEditComponent],
   providers:	[ BugOperations, BugStorage ],
   exports : 	[ BugTrackerComponent]
 })
