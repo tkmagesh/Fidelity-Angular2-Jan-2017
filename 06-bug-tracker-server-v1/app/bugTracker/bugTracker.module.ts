@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } 	 from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { UtilsModule }	 from '../utils/utils.module';
 
@@ -15,7 +16,7 @@ import { BugServer }				 from './services/BugServer.service';
 
 
 @NgModule({
-  imports:      [ FormsModule, UtilsModule, CommonModule ],
+  imports:      [ FormsModule, UtilsModule, CommonModule, HttpModule ],
   declarations: [ BugTrackerComponent, ClosedCountPipe, BugStatsComponent, BugEditComponent, BugItemComponent],
   providers:	[ BugOperations, BugStorage, BugServer ],
   exports : 	[ BugTrackerComponent]

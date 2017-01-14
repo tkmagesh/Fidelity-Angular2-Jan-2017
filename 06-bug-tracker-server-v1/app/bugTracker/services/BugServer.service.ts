@@ -49,4 +49,45 @@ export class BugServer{
 		})
 		.then((response : any) => this.loadData());
 	}
+
+	toggle(bug : IBug){
+
+		fetch(`http://localhost:3333/bugs/${bug.id}`, {
+			method : 'PUT',
+			body : JSON.stringify(this.bugOperations.toggle(bug)),
+			headers : {
+				'content-type' : 'application/json'
+			}
+		})
+		.then((response : any) => this.loadData());	
+	}
+
+	removeClosed(){
+		/*var promises : any[]= [];
+		this.bugs.then((bugs) => {
+			var bugToBeRemoved = bugs.filter(bug => bug.isClosed);
+			bugToBeRemoved.forEach(bug => {
+				var promise = fetch(`http://localhost:3333/bugs/${bug.id}`, {
+					method : 'DELETE'
+				})
+				promises.push(promise);
+			});
+			Promise
+				.all(promises)
+				.then(() => this.loadData())
+
+		})*/
+
+		this.bugs
+			.then((bugs : IBug[]) => bugs.filter(bug => bug.isClosed))
+			.then((closedBugs : IBug[]) =>
+					closedBugs.map(closedBug => 
+						fetch(`http://localhost:3333/bugs/${closedBug.id}`, {
+							method : 'DELETE'
+						})
+					)
+			)
+			.then((promises : any) => Promise.all(promises))
+			.then(() => this.loadData());
+	}
 }

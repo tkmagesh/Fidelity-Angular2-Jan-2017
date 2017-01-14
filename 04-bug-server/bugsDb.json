@@ -1,24 +1,6 @@
 {
   "bugs": [
     {
-      "id": 3,
-      "name": "Server communication failure",
-      "isClosed": true,
-      "createdAt": "2016-09-09T06:38:33.530Z"
-    },
-    {
-      "id": 4,
-      "name": "Application not responding to user actions",
-      "isClosed": false,
-      "createdAt": "2016-12-23T09:35:03.401Z"
-    },
-    {
-      "id": 5,
-      "name": "Unable to add a new bug",
-      "isClosed": false,
-      "createdAt": "2017-01-14T04:01:27.475Z"
-    },
-    {
       "id": 6,
       "name": "Promises are not resolved",
       "isClosed": false,
