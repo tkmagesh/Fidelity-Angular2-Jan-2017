@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/37631098/angular-2-how-to-bundle-for-production

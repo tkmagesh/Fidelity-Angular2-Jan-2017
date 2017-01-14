@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
 	template : `
 		
-		<div>{{data}}</div>
+		<div id="divMessage">{{data}}</div>
 	`,
 	selector : 'greeter-message'
 })

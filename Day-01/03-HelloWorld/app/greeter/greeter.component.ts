@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 	template : `
 		<h3>Greeter</h3>
 		<label> Name : </label>
-		<input type="text" [(ngModel)]="name">
+		<input type="text" [(ngModel)]="name" id="txtName">
 		<input type="button" value="Greet" (click)="onGreetClick()" >
 		<greeter-message [data]="message"></greeter-message>
 	`,
