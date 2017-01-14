@@ -11,6 +11,30 @@
       "name": "Application not responding to user actions",
       "isClosed": false,
       "createdAt": "2016-12-23T09:35:03.401Z"
+    },
+    {
+      "id": 5,
+      "name": "Unable to add a new bug",
+      "isClosed": false,
+      "createdAt": "2017-01-14T04:01:27.475Z"
+    },
+    {
+      "id": 6,
+      "name": "Promises are not resolved",
+      "isClosed": false,
+      "createdAt": "2017-01-14T04:19:00.490Z"
+    },
+    {
+      "id": 7,
+      "name": "Chrome dev tools is out of sync",
+      "isClosed": false,
+      "createdAt": "2017-01-14T04:24:16.857Z"
+    },
+    {
+      "id": 8,
+      "name": "temp container is not dependable",
+      "isClosed": false,
+      "createdAt": "2017-01-14T04:27:25.698Z"
     }
   ],
   "employees": [

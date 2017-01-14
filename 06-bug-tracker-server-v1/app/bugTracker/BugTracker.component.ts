@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBug } from './models/IBug';
-import { BugStorage } from './services/BugStorage.service';
+import { BugServer } from './services/BugServer.service';
 
 declare var fetch:any;
 
@@ -10,7 +10,7 @@ declare var fetch:any;
 		<h1>Bug Tracker</h1>
 			<hr>
 			<section class="content">
-				<bug-stats [data]="bugs | async"></bug-stats>
+				<bug-stats [data]="bugServer.bugs | async"></bug-stats>
 				<section class="sort">
 					<label for="">Order By :</label>
 					<input type="text" [(ngModel)]="sortBy">
@@ -25,7 +25,7 @@ declare var fetch:any;
 				<section class="list">
 					<ol>
 						<bug-item 
-							*ngFor="let bug of (bugs | async | sort:sortBy:sortDescending)" 
+							*ngFor="let bug of (bugServer.bugs | async | sort:sortBy:sortDescending)" 
 							[data]="bug" 
 							(onBugToggle)="toggle($event)">
 						</bug-item>
@@ -37,22 +37,19 @@ declare var fetch:any;
 
 	`
 })
-export class BugTrackerComponent implements OnInit{
+export class BugTrackerComponent{
 	
-	bugs : Promise<Array<IBug>> = null;
+	
 
-	ngOnInit(){
-		this.bugs = fetch('http://localhost:3333/bugs')
-						.then((response : any) => response.json())
-			
-	}
 	
-	constructor(){
+
+	
+	constructor(private bugServer : BugServer){
 		
 	}
 
 	onNewBugAddEvent(bugName : string){
-		
+		this.bugServer.addNew(bugName);
 	}
 	
 
